@@ -16,4 +16,4 @@ RUN bun install --production --frozen-lockfile
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/prisma/generated ./prisma/generated
 
-CMD [ "bun", "dist/src/main.js" ]
+CMD [ "bun", "run", "start:prod" ]
