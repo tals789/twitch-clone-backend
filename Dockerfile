@@ -11,6 +11,8 @@ RUN bun run build
 
 FROM base AS prod
 WORKDIR /app
+COPY --from=build /app/tsconfig.json ./tsconfig.json
+COPY --from=build /app/nest-cli.json ./nest-cli.json
 COPY --from=build /app/package.json /app/bun.lock ./
 RUN bun install --production --frozen-lockfile
 COPY --from=build /app/dist ./dist
