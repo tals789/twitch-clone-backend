@@ -18,4 +18,4 @@ RUN bun install --production --frozen-lockfile
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/prisma/generated ./prisma/generated
 
-CMD [ "bun", "run", "start:prod" ]
+CMD ["bun", "--require", "tsconfig-paths/register", "dist/src/main.js"]
