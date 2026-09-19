@@ -1,0 +1,2 @@
+-- AlterEnum
+ALTER TYPE "token_type" ADD VALUE 'DEACTIVATE_ACCOUNT';

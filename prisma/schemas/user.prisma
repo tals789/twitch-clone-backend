@@ -1,0 +1,35 @@
+model User {
+  id String @id @default(uuid())
+
+  email String @unique
+  password String
+  username String @unique
+  displayName String @map("display_name")
+  avatar String?
+  bio String?
+  isVerified Boolean @default(false) @map("is_verified")
+  isEmailVerified Boolean @default(false) @map("is_email_verified")
+  isTOTPEnabled Boolean @default(false) @map("is_totp_enabled")
+  totpSecret String? @map("totp_secret")
+  isDeactivated Boolean @default(false) @map("is_deactivated")
+  deactivatedAt DateTime? @map("deactivated_at")
+  telegramId String? @unique @map("telegram_id")
+
+  tokens Token[]
+  socialLinks SocialLink[]
+  stream Stream?
+  chatMessages ChatMessage[]
+  followers Follow[] @relation(name: "followers")
+  followings Follow[] @relation(name: "followings")
+  notifications Notification[]
+  notificationSettings NotificationSetting?
+  transactions Transaction[]
+  sponsorshipPlans SponsorshipPlan[]
+  sponsorshipSubscriptions SponsorshipSubscription[] @relation(name: "sponsorship_subscriptions")
+  sponsors SponsorshipSubscription[] @relation(name: "sponsors")
+  
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
