@@ -1,5 +1,7 @@
-FROM oven/bun:1-alpine AS base
+FROM node:20.17.0-alpine AS base
 RUN apk add --no-cache libc6-compat
+RUN curl -fsSl https://bun.sh/install | bash
+ENV PATH="/root/.bun/bin:$PATH"
 WORKDIR /app
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
