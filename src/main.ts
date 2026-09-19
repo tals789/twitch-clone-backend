@@ -1,3 +1,4 @@
+import 'tsconfig-paths/register'
 import { NestFactory } from '@nestjs/core'
 import { CoreModule } from './core/core.module'
 import { ConfigService } from '@nestjs/config'
