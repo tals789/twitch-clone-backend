@@ -1,6 +1,6 @@
 FROM node:20.17.0-alpine AS base
 RUN apk add --no-cache libc6-compat
-RUN curl -fsSl https://bun.sh/install | bash
+RUN curl -fsSl https://bun.sh/install | sh
 ENV PATH="/root/.bun/bin:$PATH"
 WORKDIR /app
 COPY package.json bun.lock ./
